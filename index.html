@@ -1,21 +1,86 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าหลัก</title>
-    <style>
-        body {
-            background-image: url('images/Home.png');
-            background-repeat: no-repeat;
-            background-size: 95% 95%; 
-            background-position: center;
-            background-color: #cccccc;
-            min-height: 100vh; 
-            margin: 0;
-        }
-    </style>
-    <link rel="stylesheet" href="css/style.css">
+  <title>หน้าหลัก</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .carousel-container {
+        width: 100%;
+        height: 100%;
+        max-width: 1800px; /* ปรับขนาดตามต้องการ */
+        margin: 50px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel-slide {
+        display: flex;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+        flex: 0 0 100%;
+    }
+
+    .carousel-item img {
+        width: 1700px;
+        height: 800px;
+        display: block;
+        margin: auto;
+    }
+
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2em;
+        color: black;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 10;
+    }
+
+    .prev-button {
+        left: 10px;
+    }
+
+    .next-button {
+        right: 10px;
+    }
+
+    .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: gray;
+        margin: 0 5px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .indicator.active {
+        background-color: black;
+    }
+</style>
+   
+
 </head>
 <body>
     <header>
@@ -35,13 +100,106 @@
         </div>
     </header>
 
-    <div class="container">
-        <main id="content">
-        </main>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <div class="carousel-item">
+                <a href="Pages/about.html">
+                    <img src="images/WebPageAbout.png" alt="หน้า 1">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.facebook.com/?locale=th_TH" target="_blank">
+                    <img src="images/apps-facebook-login.png" alt="หน้า 2">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.youtube.com/" target="_blank">
+                    <img src="images/youtube-logo.png" alt="หน้า 3">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.google.co.th/?hl=th" target="_blank">
+                    <img src="images/Google.png" alt="หน้า 4">
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control prev-button">&#10094;</button>
+        <button class="carousel-control next-button">&#10095;</button>
+        <div class="carousel-indicators">
+            <button class="indicator active"></button>
+            <button class="indicator"></button>
+            <button class="indicator"></button>
+            <button class="indicator"></button>
+        </div>
     </div>
 
     <footer>
     </footer>
+    <script>
+        const carouselContainer = document.querySelector('.carousel-container');
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        const indicatorsContainer = document.querySelector('.carousel-indicators');
+        const indicators = document.querySelectorAll('.indicator');
 
-    </body>
+        let counter = 0;
+        let slideWidth;
+
+        function updateSlideWidth() {
+            if (carouselItems.length > 0) {
+                slideWidth = carouselItems[0].offsetWidth;
+                carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
+            }
+        }
+
+        
+        updateSlideWidth();
+        window.addEventListener('resize', updateSlideWidth);
+
+        function goToSlide(index) {
+            if (carouselItems.length === 0) return; 
+
+            if (index >= carouselItems.length) counter = 0;
+            else if (index < 0) counter = carouselItems.length - 1;
+            else counter = index;
+
+            carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
+            updateIndicators();
+        }
+
+        function nextSlide() {
+            goToSlide(counter + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(counter - 1);
+        }
+
+        function updateIndicators() {
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            if (indicators[counter]) {
+                indicators[counter].classList.add('active');
+            }
+        }
+
+        indicatorsContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('indicator')) {
+                const index = Array.from(indicators).indexOf(event.target);
+                goToSlide(index);
+            }
+        });
+
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+       
+        let intervalId = setInterval(nextSlide, 3000);
+
+        
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(intervalId));
+        carouselContainer.addEventListener('mouseleave', () => (intervalId = setInterval(nextSlide, 3000)));
+    </script>
+</body>
 </html>
