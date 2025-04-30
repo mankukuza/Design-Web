@@ -22,6 +22,49 @@ body {
     margin: 0 auto;
     /* padding: 0 20px; */
 }
+body {
+    background-color: #f8f8f8; 
+    font-family: sans-serif; 
+    margin: 0; 
+    padding: 0;
+}
+
+.about-container {
+    background-color: #FFC943; 
+    padding: 70px; 
+    text-align: left; 
+}
+.about-container-fix {
+    background-color: #FFC943; 
+    padding: 70px; 
+    text-align: left; 
+    margin-top: 70px;
+}
+
+.about-title {
+    font-size: 3em; 
+    color: #333;
+    margin-bottom: 10px; 
+}
+.about-sub-title {
+    font-size: 1em; 
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+.visual-savvy {
+    font-size: 2em; 
+    color: #555;
+    font-weight: bold; 
+    margin-bottom: 20px; 
+}
+
+.about-text {
+    font-size: 1.1em; 
+    color: #444; 
+    line-height: 1.6;
+    max-width: 1000px; 
+}
 
 
 header {
@@ -77,8 +120,8 @@ footer {
 }
 
 .yellow-bg {
-    background-color: #FFC943; /* สีเหลือง */
-    padding: 80px 0; /* ปรับ padding ด้านบนและด้านล่างตามต้องการ */
+    background-color: #FFC943;
+    padding: 80px 0; 
 }
 
 .about-title {
@@ -92,12 +135,12 @@ footer {
     color: #555;
     line-height: 1.6;
     max-width: 600px;
-    margin: 0 auto 30px; /* จัดกลางและเพิ่ม margin ด้านล่าง */
+    margin: 0 auto 30px;
 }
 
 .our-mission-section {
     margin: auto;
-    padding: 60px 0; /* ปรับ padding ด้านบนและด้านล่างตามต้องการ */
+    padding: 60px 0;
 }
 
 .mission-container {
@@ -152,17 +195,23 @@ footer {
 }
 
 .profile-image {
-    flex: 0 0 300px;
-    margin-right: 100px;
-}
+    max-width: 400px; 
+    margin: 0 auto;
+  }
 
-.profile-image img {
+/* .profile-image img {
     display: block;
     width: 150%; 
     height: 525px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+} */
+.profile-image img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    max-width: 400px;
+  }
 
 .profile-info {
     flex: 1;
@@ -203,7 +252,7 @@ footer {
 }
 
 .social-icon {
-    font-size: 1.2em; /* ขนาดไอคอน @ (ปรับได้) */
+    font-size: 1.2em;
     margin-right: 5px;
 }
 
@@ -228,10 +277,10 @@ footer {
 .award-publication li {
     margin-bottom: 8px;
 }
-/* === Styles สำหรับส่วน Services === */
+
 .services-section {
-    padding: 60px 0; /* ปรับ padding บนและล่างตามต้องการ */
-    background-color: #f8f8f8; /* สีพื้นหลังของ Section (ถ้าต้องการ) */
+    padding: 60px 0; 
+    background-color: #f8f8f8; 
 }
 
 .services-section h2 {
@@ -248,45 +297,45 @@ footer {
 }
 
 .services-grid {
-    display: grid; /* ใช้ CSS Grid Layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* สร้างคอลัมน์อัตโนมัติ ขั้นต่ำ 300px ต่อ Card */
-    gap: 30px; /* ระยะห่างระหว่าง Card */
-    max-width: 1200px; /* กำหนดความกว้างสูงสุดของ Grid */
-    margin: 0 auto; /* จัด Grid ให้อยู่ตรงกลาง */
-    padding: 0 20px; /* เพิ่ม padding ด้านข้างเล็กน้อย */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px;
 }
 
 .service-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล้นขอบมน */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
 }
 
 .card-image {
-    /* กำหนดความสูงของรูปภาพ (ถ้าต้องการ) */
+   
     height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #eee; /* สีพื้นหลังเริ่มต้นของส่วนรูปภาพ */
+    background-color: #eee; 
 }
 
 .card-image img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* ปรับขนาดรูปภาพให้พอดีกับ container โดยรักษาสัดส่วน */
+    object-fit: contain;
 }
 
 .card-content {
     padding: 20px;
     text-align: center;
-    flex-grow: 1; /* ให้ content ขยายเพื่อเติมเต็มความสูงของ card */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* จัดให้ title, subtitle, description และ button มีช่องว่างระหว่างกัน */
+    justify-content: space-between; 
 }
 
 .card-content h3 {
@@ -324,3 +373,124 @@ footer {
     background-color: #333;
 }
 
+
+/* Default styles สำหรับหน้าจอขนาดใหญ่ */
+body {
+    font-size: 16px;
+    /* ... CSS อื่นๆ ... */
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+@media (max-width: 599px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    nav ul {
+        display: block; 
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 991px) {
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 960px;
+        padding: 0 15px;
+    }
+
+    nav ul {
+        gap: 20px;
+    }
+}
+
+
+/* Default styles สำหรับหน้าจอขนาดใหญ่ (เหมือนเดิม) */
+/* ... */
+
+/* Styles สำหรับแท็บเล็ต (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px; /* ปรับขนาด Container สำหรับแท็บเล็ต */
+    }
+
+    nav ul {
+        gap: 15px; /* ลดระยะห่างเมนู */
+    }
+
+    .about-title {
+        font-size: 2.2em; /* ลดขนาดหัวข้อ */
+    }
+}
+
+/* Styles สำหรับมือถือ (น้อยกว่า 600px) */
+@media (max-width: 599px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    nav ul {
+        display: block;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+   
+
+    .profile-container {
+        flex-direction: column; /* เปลี่ยนเป็นแนวตั้งบนมือถือ */
+        align-items: center; /* จัดตรงกลาง */
+    }
+      
+    .profile-info {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-responsive {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 56.25%; 
+        height: 0;
+    }
+    
+    .map-responsive iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+}
